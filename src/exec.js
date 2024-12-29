@@ -4,7 +4,6 @@ import { execSync } from "child_process";
 
 const args = process.argv.slice(2); // 引数取得
 const fileName = args[0]; // 実行するファイル名
-const commandLineArgs = JSON.stringify(args.slice(1)); // 残りの引数
 
 // src/problems 以下を再帰的に探索してファイルを見つける関数
 const findFiles = (baseDir, fileName) => {
@@ -67,7 +66,7 @@ try {
   }
 
   // コマンド実行
-  execSync(`vite-node ${filePath} ${commandLineArgs}`, { stdio: "inherit" });
+  execSync(`vite-node ${filePath}`, { stdio: "inherit" });
 } catch (error) {
   console.error(error.message);
   process.exit(1);
