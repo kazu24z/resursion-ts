@@ -11,6 +11,6 @@ const data = [
 
 // 引数なし関数の場合はそのまま実行
 for(let i=0; i<data.length; i++) {
-  main(data[i]);
+  console.log(`${data[i]}:`, main(data[i]));
 }
 
