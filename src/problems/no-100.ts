@@ -7,27 +7,13 @@ export function main(s:string): number{
     hashMap[s[i]] = (hashMap[s[i]]||0) + 1;
   }
 
-  // key: valueでvalueが1の文字を抽出
-  // {"a": 1, "b": 2}
-  // [[key, value], [key, value]]
-  const temp = Object.fromEntries(
-    Object.entries(hashMap).filter(([key, value])=>{
-      return value === 1
-    })
-  )
-
-  const targetCandidates = Object.keys(temp) // ["c", "e", "g"]
-
-  console.log(targetCandidates.length)
-  if(targetCandidates.length === 0) return -1
-
-  // sの中からtargetCandidatesのインデックスを取得する
-  const targetIndex:number[] = [] // [1, 2, 4]
-  for(let i=0; i<targetCandidates.length; i++){
-    targetIndex.push(s.indexOf(targetCandidates[i]))
+  for(let i=0; i<s.length; i++){
+    if(hashMap[s[i]] === 1) {
+      return i
+    }
   }
 
-  return Math.min(...targetIndex)
+  return -1
 }
 
 // 入力データ（問題ごとに修正）
